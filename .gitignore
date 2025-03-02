@@ -1,0 +1,4 @@
+# you put those name of those files and folders which you do not wish to push to your git repo or in production
+node_modules/
+dist/
+.parcel-cache/

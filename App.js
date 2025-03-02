@@ -1,3 +1,7 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+// import { createRoot } from "react-dom/client";
+
 console.log("App.js");
 
 // the 3 parameters that createElement will accpet are {child element, properties (props for short), content of the child element}
