@@ -1,5 +1,7 @@
 # Namaste React 🚀🚀
 
+This is a web-series on React by Akshay Saini.
+
 # Parcel
 
 - Dev Build
