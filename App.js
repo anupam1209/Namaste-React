@@ -1,63 +1,84 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-// import { createRoot } from "react-dom/client";
 
-console.log("App.js");
+// react element
+//  Q. what is a react element??
+//  A. it is equivalent to DOM element but it is an object
 
-// the 3 parameters that createElement will accpet are {child element, properties (props for short), content of the child element}
+// below is a react element
 const heading = React.createElement(
   "h1",
-  { id: "root", xyz: "abc" }, //these are nothing but props, it receives the object and pass the props that needs to be set
-  "render from React!!"
+  {
+    id: "heading",
+  },
+  "Namaste Anupam!!!🙏🏻"
 );
 
-{
-  /* <div id="parent">
-    <div id="child">
-        <h1 id="heading"></h1>
+//JSX
+//JSX => Babel transpiles it to React.createElement => ReactElement (JS Object) => HTMLElement (render)
+const jsxHeading = (
+  <div className="parent">
+    <h1 className="heading">This is JSX heading😍</h1>
+  </div>
+);
+
+// const reactElement = (
+//   <>
+//     <h2>this is a test react element</h2>
+//   </>
+// );
+
+const newReactElement = (
+  <div>
+    React element👇🏻
+    <div class="reactElement">
+      <p>line 1</p>
+      <p>line 2</p>
+      {jsxHeading} {/* putting the ReactElement into the ReactElement */}
     </div>
-</div> */
-}
-
-// React.createElement RETURNS AN OBJECT WHICH IS ON RENDERING CONVERTED INTO HTML CODE WHICH BROWSER CAN UNDERSTAND
-const nestedStructure = React.createElement(
-  "div",
-  { id: "parent" },
-  React.createElement(
-    "div",
-    { id: "child" },
-    React.createElement(
-      "h1",
-      { id: "heading" },
-      "i'm the h1 tag from nested structure!!"
-    )
-  )
+  </div>
 );
 
-// what if you want to make the 2 siblings like below??
-{
-  /* <div id="parent">
-      <div id="child">
-          <h1 id="heading"></h1>
-          <h2 id="heading2"></h2>
-      </div>
-  </div> */
-}
-const secondNestedStructure = React.createElement(
-  "div",
-  { id: "parent" },
-  React.createElement("div", { id: "child" }, [
-    React.createElement(
-      "h1",
-      { id: "heading" },
-      "i'm the h1 tag from nested structure!!"
-    ),
-    React.createElement("h2", { id: "heading2" }, "i'm the second heading!!"),
-  ])
-);
+console.log(newReactElement);
 
-console.log(nestedStructure);
+const title = function () {
+  return (
+    <>
+      <h2>this is a normal function and not arrow function</h2>
+    </>
+  );
+};
+
+// below is a functional component
+const Title = () => {
+  return (
+    <>
+      {" "}
+      {/* <HeadingComponent /> */}{" "}
+      {/* DON'T DO THIS, YOUR BROWSER WILL GO INTO INFINITE LOOP */}
+      <h1>This is titleࠈ</h1>
+    </>
+  );
+};
+
+// React Component
+// 1. Class based component (old way)
+// 2. Functional components (new way)
+const HeadingComponent = () => {
+  return (
+    <>
+      <Title />
+      {Title()}{" "}
+      {/* you can also do this, as Functional Component is nothing but a simple JavaScript function, right?? */}
+      {newReactElement}{" "}
+      {/* at the end newReactElement is a javascript object, right? */}
+      <h1>This is a Heading Component!!🥹 </h1>
+    </>
+  );
+};
+
+// we now have to create the root for the React using ReactDOM
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(secondNestedStructure);
+root.render(<HeadingComponent />);
