@@ -1,0 +1,141 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  border: 1px solid black;
+  padding: 20px;
+}
+
+/* Header Container */
+.header {
+  display: flex; /* Place logo and nav side by side */
+  align-items: center; /* Vertically center items */
+  justify-content: space-between; /* Space logo and nav apart */
+  background-color: #f8f9fa; /* Light background color */
+  padding: 10px 20px; /* Spacing around the header content */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle drop shadow */
+  /* border: 1px solid red; */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo Section */
+.logo img {
+  height: 60px; /* Adjust as needed */
+}
+
+.company-name {
+  font-size: 1.2rem; /* Slightly larger text */
+  font-weight: 600; /* Semi-bold font weight */
+  padding-left: 10px;
+}
+
+/* Navigation Menu */
+.header ul {
+  list-style-type: none; /* Remove bullet points */
+  display: flex; /* Lay out list items horizontally */
+  gap: 15px; /* Space between menu items */
+  margin: 0; /* Remove default browser margin */
+  padding: 0; /* Remove default browser padding */
+  padding-right: 20px;
+}
+
+/* Individual Menu Items */
+.header li {
+  cursor: pointer; /* Show pointer on hover */
+  transition: color 0.3s ease; /* Smooth transition effect */
+}
+
+/* Hover Effect for Menu Items */
+.header li:hover {
+  color: #007bff; /* Change text color on hover */
+}
+
+/* SEARCH BAR CSS */
+.search-box {
+  margin-bottom: 10px;
+}
+
+.input-search {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  margin-top: 20px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-search:focus {
+  outline: none;
+  border-color: #5dade2;
+  box-shadow: 0 0 8px rgba(93, 173, 226, 0.6);
+}
+
+/* RESTAURANT CARD CONTAINER CSS*/
+.restaurant-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* RESTAURANT CARD CSS*/
+.restaurant-card {
+  width: 250px; /* Set the card width */
+  background-color: #fff; /* White background */
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; /* Ensures content respects the border radius */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transitions */
+  margin: 16px; /* Optional margin to separate multiple cards */
+  padding-bottom: 20px;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-5px); /* Slight lift effect on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* Enhanced shadow on hover */
+  cursor: pointer;
+}
+
+.res-image {
+  width: 100%; /* Image fills the card width */
+  height: 150px; /* Fixed image height */
+  object-fit: cover; /* Ensures image covers area without distortion */
+}
+
+.restaurant-card h3 {
+  margin: 12px; /* Spacing around the heading */
+  text-align: center; /* Centered text */
+  font-size: 1.2rem; /* Adjust font size as needed */
+  color: #333; /* Dark gray text color */
+}
+
+.res-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-items: center;
+  align-items: center;
+}
+
+.rating-delivery {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.res-rating {
+  height: 30px;
+  width: auto;
+}
+
+.delivery-logo {
+  height: 30px;
+  width: auto;
+}
