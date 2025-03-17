@@ -22,15 +22,61 @@
   justify-content: center;
 }
 
+/* CSS for Login Button similar to Zomato login button */
+.login-btn {
+  background-color: #e23744; /* Zomato red */
+  color: #ffffff; /* White text */
+  border: none; /* No border */
+  padding: 10px 20px; /* Comfortable padding */
+  font-size: 16px; /* Readable text size */
+  border-radius: 4px; /* Slightly rounded corners */
+  cursor: pointer; /* Pointer on hover */
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+  text-align: center; /* Centered text */
+  text-decoration: none; /* No underline */
+  display: inline-block; /* Inline block for proper spacing */
+}
+
+.login-btn:hover {
+  background-color: #c72e39; /* Slightly darker red on hover */
+}
+
 /* Logo Section */
 .logo img {
   height: 60px; /* Adjust as needed */
 }
 
 .company-name {
-  font-size: 1.2rem; /* Slightly larger text */
-  font-weight: 600; /* Semi-bold font weight */
-  padding-left: 10px;
+  font-family: "Righteous", cursive;
+  font-size: 1.8rem;
+  font-weight: 500;
+  padding-left: 12px;
+  color: #3b82f6;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.company-name::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 12px;
+  width: 0;
+  height: 2px;
+  background-color: #3b82f6;
+  transition: width 0.3s ease;
+}
+
+.company-name:hover::after {
+  width: 80%;
+}
+
+.company-name:hover {
+  transform: scale(1.05);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Navigation Menu */
@@ -41,6 +87,8 @@
   margin: 0; /* Remove default browser margin */
   padding: 0; /* Remove default browser padding */
   padding-right: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Individual Menu Items */
@@ -55,6 +103,28 @@
 }
 
 /* SEARCH BAR CSS */
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.search button {
+  background-color: #339af0;
+  color: #ffffff; /* White text */
+  border: none; /* No border */
+  padding: 10px 20px; /* Comfortable padding */
+  font-size: 16px; /* Readable text size */
+  border-radius: 4px; /* Slightly rounded corners */
+  cursor: pointer; /* Pointer on hover */
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+  text-align: center; /* Centered text */
+  text-decoration: none; /* No underline */
+  display: inline-block; /* Inline block for proper spacing */
+  margin-top: 12px;
+}
+
 .search-box {
   margin-bottom: 10px;
 }
@@ -75,7 +145,6 @@
   border-color: #5dade2;
   box-shadow: 0 0 8px rgba(93, 173, 226, 0.6);
 }
-
 
 /* FILTER BUTTON CSS */
 .filter-btn {
@@ -187,4 +256,75 @@
 .delivery-logo {
   height: 30px;
   width: auto;
+}
+
+/* Shimmer UI Styles */
+.shimmer-card {
+  width: 250px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  margin: 16px;
+  padding-bottom: 20px;
+}
+
+.shimmer-image {
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.shimmer-content {
+  padding: 12px;
+}
+
+.shimmer-title {
+  height: 24px;
+  width: 80%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  margin-bottom: 12px;
+  border-radius: 4px;
+}
+
+.shimmer-rating {
+  height: 20px;
+  width: 60%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  margin-bottom: 8px;
+  border-radius: 4px;
+}
+
+.shimmer-cuisine {
+  height: 16px;
+  width: 90%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  margin-bottom: 8px;
+  border-radius: 4px;
+}
+
+.shimmer-area {
+  height: 16px;
+  width: 70%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }

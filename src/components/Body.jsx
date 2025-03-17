@@ -1,44 +1,96 @@
 import "../styles/style.css";
-import resList from "../data/restaurantData";
 import RestaurantCard from "./RestaurantCard";
+import ShimmerUI from "./ShimmerUI";
 
 // we will use the useState hook (named export)
 import { useState } from "react";
+import { useEffect } from "react";
 
 export const Body = () => {
-  // Line 10 uses the useState hook from React to create a state variable
-  // useState is a React Hook that lets you add state to functional components
-  // It returns an array with two elements: the current state value and a function to update it
-  // Here we're initializing the state with the restaurant list data from resList
-  const [restaurantList, setRestaurantList] = useState(resList);
+  // State for the filtered restaurant list that we display
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [allRestaurants, setAllRestaurants] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchText, setSearchText] = useState("");
+
+  const fetchData = async () => {
+    setIsLoading(true);
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&collection=83637&tags=layout_CCS_Burger&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
+    );
+
+    const jsonData = await data.json();
+
+    const restaurantList = jsonData?.data?.cards?.slice(3); //using optional chaining
+
+    setListOfRestaurants(restaurantList);
+    console.log(restaurantList);
+    setAllRestaurants(restaurantList);
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return <ShimmerUI />;
+  }
 
   return (
     <div className="body">
-      <div className="search-box">
-        <input
-          type="text"
-          className="input-search"
-          placeholder="Type to Search..."
-        />
+      <div className="search">
+        <div className="search-box">
+          <input
+            type="text"
+            className="input-search"
+            placeholder="Search by restaurant..."
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
+        </div>
+        <div>
+          <button
+            onClick={() => {
+              console.log(searchText);
+              // 1. search for the restaurants with the search text
+              // 2. filter the restaurants
+              const filteredRestaurants = listOfRestaurants.filter((res) => {
+                return res.card.card.info.name
+                  .toLowerCase()
+                  .includes(searchText.toLowerCase());
+              });
+
+              // 3. render the filtered restaurants
+              console.log(filteredRestaurants);
+              setListOfRestaurants(filteredRestaurants);
+              setSearchText("");
+            }}
+          >
+            Search
+          </button>
+        </div>
       </div>
       <div>
         <button
           onClick={() => {
-            const newList = resList.filter(
-              (res) => res.card.card.info.avgRating < 4.2
+            const newList = listOfRestaurants.filter(
+              (res) => res.card.card.info.avgRating > 4.3
             );
 
-            setRestaurantList(newList);
+            setListOfRestaurants(newList);
           }}
           className="filter-btn"
         >
-          Low Rated Restaurants
+          High Rated Restaurants
         </button>
       </div>
       <div>
         <button
           onClick={() => {
-            setRestaurantList(resList);
+            setListOfRestaurants(allRestaurants);
           }}
           className="filter-btn"
         >
@@ -48,7 +100,7 @@ export const Body = () => {
       <div className="restaurant-container">
         {/* there is something called as props, okay? */}
         {/* props are nothing but arguments to a react component */}
-        {restaurantList.map((restaurant) => (
+        {listOfRestaurants.map((restaurant) => (
           <RestaurantCard
             key={restaurant.card.card.info.id}
             resData={restaurant}
