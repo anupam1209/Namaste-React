@@ -1,0 +1,97 @@
+.restaurant-main-body {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.rcard {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 16px;
+  width: 280px;
+  font-family: sans-serif;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rcard:hover {
+  transform: translateY(-5px); /* Slight lift effect on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* Enhanced shadow on hover */
+  cursor: pointer;
+}
+
+.rcard__name {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #212121;
+}
+
+.rcard__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.rcard__rating {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #4caf50;
+}
+
+.rcard__rating-value {
+  font-weight: bold;
+  margin-right: 4px;
+}
+
+.rcard__rating-star {
+  margin-right: 4px;
+}
+
+.rcard__rating-count {
+  font-size: 12px;
+  color: #757575;
+}
+
+.rcard__price {
+  font-size: 14px;
+  font-weight: bold;
+  color: #616161;
+}
+
+.rcard__categories {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.rcard__category-link {
+  text-decoration: none;
+  color: #ff5722;
+}
+
+.rcard__category-link:hover {
+  text-decoration: underline;
+}
+
+.rcard__category-sep {
+  color: #757575;
+}
+
+.rcard__footer {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #424242;
+  gap: 4px;
+}
+
+.rcard__outlet strong {
+  margin-right: 4px;
+}
+
+.rcard__time {
+  font-style: italic;
+  color: #757575;
+}

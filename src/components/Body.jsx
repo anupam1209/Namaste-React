@@ -5,6 +5,8 @@ import ShimmerUI from "./ShimmerUI";
 // we will use the useState hook (named export)
 import { useState } from "react";
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Body = () => {
   // State for the filtered restaurant list that we display
@@ -13,10 +15,12 @@ export const Body = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [searchText, setSearchText] = useState("");
 
+  const { resID } = useParams();
+
   const fetchData = async () => {
     setIsLoading(true);
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&collection=83637&tags=layout_CCS_Burger&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
+      `https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&collection=83637&tags=layout_CCS_Burger&sortBy=&filters=&type=rcv2&offset=0&page_type=null`
     );
 
     const jsonData = await data.json();
@@ -49,6 +53,19 @@ export const Body = () => {
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
+            onKeyDown={(e) => {
+              if (e.key == "Enter") {
+                const filteredRestaurants = allRestaurants.filter((res) => {
+                  return res.card.card.info.name
+                    .toLowerCase()
+                    .includes(searchText.toLowerCase());
+                });
+
+                // 3. render the filtered restaurants
+                setListOfRestaurants(filteredRestaurants);
+                setSearchText("");
+              }
+            }}
           />
         </div>
         <div>
@@ -57,14 +74,13 @@ export const Body = () => {
               console.log(searchText);
               // 1. search for the restaurants with the search text
               // 2. filter the restaurants
-              const filteredRestaurants = listOfRestaurants.filter((res) => {
+              const filteredRestaurants = allRestaurants.filter((res) => {
                 return res.card.card.info.name
                   .toLowerCase()
                   .includes(searchText.toLowerCase());
               });
 
               // 3. render the filtered restaurants
-              console.log(filteredRestaurants);
               setListOfRestaurants(filteredRestaurants);
               setSearchText("");
             }}
@@ -100,12 +116,18 @@ export const Body = () => {
       <div className="restaurant-container">
         {/* there is something called as props, okay? */}
         {/* props are nothing but arguments to a react component */}
-        {listOfRestaurants.map((restaurant) => (
-          <RestaurantCard
-            key={restaurant.card.card.info.id}
-            resData={restaurant}
-          />
-        ))}
+        {listOfRestaurants.length === 0 ? (
+          <p>No restaurants found!!</p>
+        ) : (
+          listOfRestaurants.map((restaurant) => (
+            <Link
+              key={restaurant.card.card.info.id}
+              to={"/restaurant/" + restaurant.card.card.info.id}
+            >
+              <RestaurantCard resData={restaurant} />
+            </Link>
+          ))
+        )}
       </div>
     </div>
   );
