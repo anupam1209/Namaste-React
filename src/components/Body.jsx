@@ -121,6 +121,7 @@ export const Body = () => {
         ) : (
           listOfRestaurants.map((restaurant) => (
             <Link
+              style={{ textDecoration: "none", color: "GrayText" }}
               key={restaurant.card.card.info.id}
               to={"/restaurant/" + restaurant.card.card.info.id}
             >

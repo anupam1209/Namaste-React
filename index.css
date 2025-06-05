@@ -2,9 +2,13 @@
   color: #3b5bdb;
 } */
 
+/* Apply font to the entire application */
+:root {
+  font-family: "Poppins", sans-serif;
+}
+
 .heading,
 body {
-  font-family: sans-serif;
   text-align: center;
 }
 
