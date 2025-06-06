@@ -1,10 +1,14 @@
 import companyLogo from "../img/logo.png";
+import "../styles/style.css";
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
+
+  const onlineStatus = useOnlineStatus();
 
   return (
     <div className="header">
@@ -14,6 +18,11 @@ const Header = () => {
       </div>
       <div>
         <ul>
+          <li>
+            <p className="online-status-message">
+              You're {onlineStatus ? "online 🟢" : "offline 🔴"}
+            </p>
+          </li>
           <li>
             <Link style={{ textDecoration: "none" }} to="/">
               Home

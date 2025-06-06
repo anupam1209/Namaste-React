@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { SWIGGY_API } from "../constants/constants";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 export const Body = () => {
   // State for the filtered restaurant list that we display
@@ -17,6 +18,7 @@ export const Body = () => {
   const [searchText, setSearchText] = useState("");
 
   const { resID } = useParams();
+  const onlineStatus = useOnlineStatus();
 
   const fetchData = async () => {
     setIsLoading(true);
@@ -35,6 +37,12 @@ export const Body = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  if (onlineStatus === false) {
+    return (
+      <h2>You're offline!!! Check your internet connection and try again</h2>
+    );
+  }
 
   if (isLoading) {
     return <ShimmerUI />;

@@ -400,3 +400,17 @@
   width: 300px;
   height: 300px;
 }
+
+
+.online-status-message {
+  position: fixed;
+  bottom: 10px;    /* adjust as needed */
+  right: 10px;     /* adjust as needed */
+  font-size: 0.75rem;
+  color: #666666;
+  margin: 0;       /* margin can be zero since we’re positioning explicitly */
+  line-height: 1.2;
+  font-weight: 400;
+  font-family: Arial, sans‐serif;
+  z-index: 999;    /* ensures it sits above most other content */
+}
