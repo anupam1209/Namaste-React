@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { SWIGGY_API } from "../constants/constants";
 
 export const Body = () => {
   // State for the filtered restaurant list that we display
@@ -19,16 +20,14 @@ export const Body = () => {
 
   const fetchData = async () => {
     setIsLoading(true);
-    const data = await fetch(
-      `https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&collection=83637&tags=layout_CCS_Burger&sortBy=&filters=&type=rcv2&offset=0&page_type=null`
-    );
+    const data = await fetch(SWIGGY_API);
 
     const jsonData = await data.json();
 
     const restaurantList = jsonData?.data?.cards?.slice(3); //using optional chaining
 
     setListOfRestaurants(restaurantList);
-    console.log("restaurantList: ",restaurantList);
+    console.log("restaurantList: ", restaurantList);
     setAllRestaurants(restaurantList);
     setIsLoading(false);
   };

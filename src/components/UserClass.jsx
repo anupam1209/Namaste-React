@@ -46,7 +46,6 @@ class UserClass extends React.Component {
           <img
             src="https://avatars.githubusercontent.com/u/54218987?v=4"
             alt="GitHub user avatar"
-            srcset=""
           />
           <p>
             <i>College: {company}</i>
