@@ -10,7 +10,7 @@ class UserClass extends React.Component {
     // will assing this.props otherwise it will be undefined
     super(props);
 
-    console.log(this.props.name + " constructor");
+    // console.log(this.props.name + " constructor");
 
     // console.log("props(class-based-component):", props);
 
@@ -19,29 +19,37 @@ class UserClass extends React.Component {
       count: 23,
       // how do we create multiple state variables??
       secondCount: 67,
+      userInfo: {},
     };
   }
 
-  componentDidMount() {
-    console.log(this.props.name + " componentDidMount");
+  async componentDidMount() {
+    // console.log(this.props.name + " componentDidMount");
+    const data = await fetch("https://api.github.com/users/anupam1209");
+    const json = await data.json();
+
+    // console.log(json);
+
+    this.setState({ userInfo: json });
   }
 
   // there will be a function render()
   render() {
-    console.log(this.props.name + " render function");
-    const { researchArea } = this.props;
+    const { name, company } = this.state.userInfo;
     //this render function will return JSX
     return (
       <>
         <div className="user-card">
           <p>
-            <i>Name: Anupam Prakash</i>
+            <i>Name: {name}</i>
           </p>
+          <img
+            src="https://avatars.githubusercontent.com/u/54218987?v=4"
+            alt="GitHub user avatar"
+            srcset=""
+          />
           <p>
-            <i>College: NITK</i>
-          </p>
-          <p>
-            <i>Research Area: {researchArea}</i>
+            <i>College: {company}</i>
           </p>
           <p>
             <i>Count: {this.state.count}</i>

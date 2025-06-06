@@ -27,8 +27,7 @@ class About extends React.Component {
 
           <p>Class Based Component ⬇️</p>
           {/* we will pass the props in the same way we did for the functional based components */}
-          <UserClass researchArea={"Quantum Computing"} name={"first child"} />
-          <UserClass researchArea={"Quantum Computing"} name={"second child"} />
+          <UserClass/>
         </div>
       </>
     );

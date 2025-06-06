@@ -28,7 +28,7 @@ export const Body = () => {
     const restaurantList = jsonData?.data?.cards?.slice(3); //using optional chaining
 
     setListOfRestaurants(restaurantList);
-    console.log(restaurantList);
+    console.log("restaurantList: ",restaurantList);
     setAllRestaurants(restaurantList);
     setIsLoading(false);
   };
