@@ -3,6 +3,7 @@ import "../styles/style.css";
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
@@ -22,6 +23,11 @@ const Header = () => {
             <p className="online-status-message">
               You're {onlineStatus ? "online 🟢" : "offline 🔴"}
             </p>
+          </li>
+          <li>
+            <Link style={{ textDecoration: "none" }} to="/grocery">
+              Grocery
+            </Link>
           </li>
           <li>
             <Link style={{ textDecoration: "none" }} to="/">
